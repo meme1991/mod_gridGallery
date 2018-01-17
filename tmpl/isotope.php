@@ -104,7 +104,7 @@ phocagalleryimport('phocagallery.library.library');
 $document->addScriptDeclaration("
   jQuery(document).ready(function($){
 
-    $('.grid-gallery.gid-".$gal_id."').magnificPopup({
+    $('.grid-isotope-layout .grid-gallery.gid-".$gal_id."').magnificPopup({
 	    delegate:'a.magnific-overlay',
 	    type:'image',
 	    gallery:{enabled:true}
@@ -116,7 +116,7 @@ $document->addScriptDeclaration("
 $document->addScriptDeclaration("
 	jQuery(document).ready(function($){
 
-		var grid = $('.grid-gallery.gid-".$gal_id."').isotope({
+		var grid = $('.grid-isotope-layout .grid-gallery.gid-".$gal_id."').isotope({
 		  // set itemSelector so .grid-sizer is not used in layout
 		  itemSelector: '.grid-item',
 		  percentPosition: true,
@@ -126,7 +126,7 @@ $document->addScriptDeclaration("
 		})
 
 		// filter items on button click
-		$('.filter-button-group').on( 'click', 'button', function() {
+		$('.grid-isotope-layout .filter-button-group').on( 'click', 'button', function() {
 		  var filterValue = $(this).attr('data-filter');
 		  grid.isotope({ filter: filterValue });
 		});
