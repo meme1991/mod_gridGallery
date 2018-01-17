@@ -37,7 +37,9 @@ phocagalleryimport('phocagallery.library.library');
 			<div class="row">
 				<div class="col-12 title-section">
 					<h2><?php echo $module->title ?></h2>
-					<p>Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa.</p>
+					<?php if($description) : ?>
+						<p><?= $description ?></p>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
@@ -57,8 +59,9 @@ phocagalleryimport('phocagallery.library.library');
 		</div>
 		<div class="row grid-gallery mt-5">
 			<div class="col-6 col-sm-6 col-md-4 col-lg-<?php echo $col ?> col-xl-<?php echo $col ?> image grid-sizer"></div>
-
-			<?php shuffle($list) ?>
+			<?php if($shuffle) : ?>
+				<?php shuffle($list) ?>
+			<?php endif; ?>
 			<?php foreach($list as $k => $item) : ?>
 
 				<?php if($k >= $limit) : ?>
@@ -73,15 +76,15 @@ phocagalleryimport('phocagallery.library.library');
 
 				<?php $hidden = ''; ?>
 				<?php if($k > 10) : ?>
-					<?php $hidden = 'hidden-sm-down'; ?>
+					<?php $hidden = 'd-none'; ?>
 				<?php endif; ?>
 
 				<div class="col-6 col-sm-6 col-md-4 col-lg-<?php echo $col ?> col-xl-<?php echo $col ?> image <?php echo $hidden ?> grid-item <?php echo $item->alias ?>">
 					<figure style="margin:<?php echo $margin ?>px">
 						<a class="magnific-overlay" title="<?php echo $item->title ?>" href="<?php echo $flink ?>">
 							<img src="<?php echo JUri::base(true)."/images/phocagallery/".$item->filename; ?>" class="img-fluid" alt="">
-							<figcaption class="d-flex justify-content-center align-items-center">
-								<p class="mb-0 text-center text-white"><?php echo $item->title ?></p>
+							<figcaption class="d-flex justify-content-center align-items-center" style="background-color:<?= $imgOverlay ?>">
+								<p class="mb-0 text-center" style="color:<?= $imgText ?>"><?php echo $item->title ?></p>
 							</figcaption>
 						</a>
 					</figure>

@@ -34,7 +34,7 @@ $link_text    = $params->get('link-text');
 $gal_id = substr(md5($module->id.$module->title), 1, 5);
 
 $list      = ModGridGallery::category($catid, $image);
-$col       = 12/$num_line;
+$col       = $num_line;
 $container = ($container) ? '-fluid' : '';
 
 $document = JFactory::getDocument();
@@ -78,6 +78,20 @@ switch ($params->get('layout')) {
     	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/masonry/lazyload.min.js');
     }
     break;
+
+  case '_:slide-auto':
+    $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/css/slide-auto.min.css?v=1.0.0');
+    // isotope
+    $extensionPath = '/templates/'.$tmpl.'/dist/swiper/';
+    if(file_exists(JPATH_SITE.$extensionPath)){
+    	$document->addStyleSheet(JUri::base(true).'/templates/'.$tmpl.'/dist/swiper/swiper.min.css');
+      $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/swiper/swiper.min.js');
+    } else{
+      $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/dist/swiper/swiper.min.css');
+    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/swiper/swiper.min.js');
+    }
+    break;
+
 
 }
 

@@ -63,11 +63,11 @@ phocagalleryimport('phocagallery.library.library');
 
 				<?php $hidden = ''; ?>
 				<?php if($k > 10) : ?>
-					<?php $hidden = 'hidden-sm-down'; ?>
+					<?php $hidden = 'd-none'; ?>
 				<?php endif; ?>
 
 				<div class="col-6 col-sm-6 col-md-4 col-lg-<?php echo $col ?> col-xl-<?php echo $col ?> image <?php echo $hidden ?>" style="height: <?php echo $height ?>px">
-					<figure style="margin:<?php echo $margin ?>px">
+					<figure style="margin:<?= $margin ?>px">
 						<a class="magnific-overlay" title="<?php echo $item->title ?>" href="<?php echo $flink ?>">
 							<img src="<?php echo JUri::base(true)."/images/phocagallery/".$item->filename; ?>" alt="">
 							<figcaption class="d-flex justify-content-center align-items-center" style="background-color:<?= $imgOverlay ?>">
@@ -79,7 +79,7 @@ phocagalleryimport('phocagallery.library.library');
 			<?php endforeach; ?>
 
 			<?php if($linkYN) : ?>
-				<div class="col-12 d-flex align-items-center justify-content-center image mt-4">
+				<div class="col-12 d-flex align-items-center justify-content-center mt-4">
 					<p class="mb-0"><a href="<?php echo $link ?>" title="<?php echo $link_text ?>" class="btn btn-primary"><?php echo $link_text ?> <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
 				</div>
 			<?php endif; ?>
@@ -89,6 +89,7 @@ phocagalleryimport('phocagallery.library.library');
 </section>
 
 <?php
+
 $document->addScriptDeclaration("
   jQuery(document).ready(function($){
 
