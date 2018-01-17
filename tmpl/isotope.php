@@ -77,7 +77,7 @@ phocagalleryimport('phocagallery.library.library');
 				<?php endif; ?>
 
 				<div class="col-6 col-sm-6 col-md-4 col-lg-<?php echo $col ?> col-xl-<?php echo $col ?> image <?php echo $hidden ?> grid-item <?php echo $item->alias ?>">
-					<figure class="mb-0 m-1">
+					<figure style="margin:<?php echo $margin ?>px">
 						<a class="magnific-overlay" title="<?php echo $item->title ?>" href="<?php echo $flink ?>">
 							<img src="<?php echo JUri::base(true)."/images/phocagallery/".$item->filename; ?>" class="img-fluid" alt="">
 							<figcaption class="d-flex justify-content-center align-items-center">
