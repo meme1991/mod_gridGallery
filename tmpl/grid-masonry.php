@@ -1,9 +1,9 @@
 <?php
 /**
- * @version    1.0.x
+ * @version    3.0.x
  * @package    GridGallery
- * @author     SPEDI Labs srl http://www.spedi.it
- * @copyright  Copyright (c) 1991 - 2016 Spedi srl. Tutti i diritti riservati.
+ * @author     SPEDI srl http://www.spedi.it
+ * @copyright  Copyright (c) Spedi srl.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 

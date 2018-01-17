@@ -1,16 +1,16 @@
 <?php
 /**
- * @version    1.0.x
+ * @version    3.0.x
  * @package    GridGallery
  * @author     SPEDI srl http://www.spedi.it
- * @copyright  Copyright (c) 1991 - 2016 Spedi srl. Tutti i diritti riservati.
+ * @copyright  Copyright (c) Spedi srl.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 defined('_JEXEC') or die;
 
 /**
- * Helper for mod_spskillset
+ * Helper for mod_gridgallery
  *
  * @since 1.0
  */
@@ -18,8 +18,8 @@ class ModGridGallery
 {
 	/**
 	 * Conversione da esadecimale a rgb
-	 * @param string $hexcode
-	 * @return string $rgb
+	 * @param string $catid
+	 * @return array $image
 	 */
 	public static function category($catid, $image = NULL){
 
