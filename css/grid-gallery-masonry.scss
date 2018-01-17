@@ -5,7 +5,7 @@
  * @copyright  Copyright (c) Spedi srl.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
-.gallery-module{
+.gallery-module.grid-masonry-layout{
   .title-section{
     padding-top: 20px;
     padding-bottom: 20px;
@@ -16,6 +16,9 @@
       padding: 0;
       overflow: hidden;
       figure{
+        position: relative;
+        overflow: hidden;
+        margin: 4px;
         figcaption{
           position: absolute;
           top: -150px;
@@ -29,6 +32,9 @@
           transition: all 0.3s ease-in-out;
           -moz-transition: all 0.3s ease-in-out;
           -webkit-transition: all 0.3s ease-in-out;
+          p{
+            color: #fff;
+          }
         }
       }
 

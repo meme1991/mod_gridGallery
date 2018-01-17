@@ -65,7 +65,7 @@ phocagalleryimport('phocagallery.library.library');
 				<?php endif; ?>
 
 				<div class="col-6 col-sm-6 col-md-4 col-lg-<?php echo $col ?> col-xl-<?php echo $col ?> image <?php echo $hidden ?> grid-item">
-					<figure class="mb-0">
+					<figure style="margin:<?php echo $margin ?>px">
 						<a class="magnific-overlay" title="<?php echo $item->title ?>" href="<?php echo $flink ?>">
 							<img src="<?php echo JUri::base(true)."/images/phocagallery/".$item->filename; ?>" class="img-fluid" alt="">
 							<figcaption class="d-flex justify-content-center align-items-center">
@@ -92,7 +92,7 @@ phocagalleryimport('phocagallery.library.library');
 $document->addScriptDeclaration("
   jQuery(document).ready(function($){
 
-    $('.grid-gallery.gid-".$gal_id."').magnificPopup({
+    $('.grid-masonry-layout .grid-gallery.gid-".$gal_id."').magnificPopup({
 	    delegate:'a.magnific-overlay',
 	    type:'image',
 	    gallery:{enabled:true}
@@ -103,8 +103,8 @@ $document->addScriptDeclaration("
 
 $document->addScriptDeclaration("
 	jQuery(document).ready(function($){
-		if($('.grid-gallery.gid-".$gal_id."').length){
-			var grid = $('.grid-gallery.gid-".$gal_id."').masonry({
+		if($('.grid-masonry-layout .grid-gallery.gid-".$gal_id."').length){
+			var grid = $('.grid-masonry-layout .grid-gallery.gid-".$gal_id."').masonry({
 				itemSelector: '.grid-item',
 				columnWidth: '.grid-sizer',
 				percentPosition: true

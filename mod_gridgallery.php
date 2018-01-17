@@ -21,6 +21,7 @@ $num_line     = $params->get('num-line');
 $container    = $params->get('container');
 $height       = $params->get('photo-height');
 $limit        = $params->get('limit');
+$margin       = $params->get('margin');
 $linkYN       = $params->get('link-yn');
 $link         = $params->get('link');
 $link_text    = $params->get('link-text');
