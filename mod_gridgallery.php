@@ -42,13 +42,34 @@ switch ($params->get('layout')) {
     break;
   case '_:grid-masonry':
     $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/css/grid-gallery-masonry.min.css?v=1.0.0');
-    $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/masonry.min.js');
-    $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/lazyload.min.js');
+    // masonry
+    $extensionPath = '/templates/'.$tmpl.'/dist/masonry/';
+    if(file_exists(JPATH_SITE.$extensionPath)){
+    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/masonry.min.js');
+    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/lazyload.min.js');
+    } else{
+    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/masonry/masonry.min.js');
+    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/masonry/lazyload.min.js');
+    }
+    // $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/masonry.min.js');
+    // $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/lazyload.min.js');
     break;
   case '_:isotope':
     $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/css/isotope.min.css?v=1.0.0');
-    $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/isotope/isotope.min.js');
-    $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/lazyload.min.js');
+    // isotope
+    $extensionPath = '/templates/'.$tmpl.'/dist/isotope/';
+    if(file_exists(JPATH_SITE.$extensionPath)){
+    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/isotope/isotope.min.js');
+    } else{
+    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/isotope/isotope.min.js');
+    }
+    // lazyload
+    $extensionPath = '/templates/'.$tmpl.'/dist/masonry/';
+    if(file_exists(JPATH_SITE.$extensionPath)){
+    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/lazyload.min.js');
+    } else{
+    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/masonry/lazyload.min.js');
+    }
     break;
 
 }
@@ -57,8 +78,16 @@ switch ($params->get('layout')) {
 if($jquery)
   JHtml::_('jquery.framework');
 if($magnific){
-  $document->addStyleSheet(JUri::base(true).'/templates/'.$tmpl.'/dist/magnific/magnific-popup.min.css');
-  $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/magnific/jquery.magnific-popup.min.js');
+  $extensionPath = '/templates/'.$tmpl.'/dist/magnific/';
+  if(file_exists(JPATH_SITE.$extensionPath)){
+    $document->addStyleSheet(JUri::base(true).'/templates/'.$tmpl.'/dist/magnific/magnific-popup.min.css');
+    $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/magnific/jquery.magnific-popup.min.js');
+  } else{
+    $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/dist/magnific/magnific-popup.min.css');
+    $document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/magnific/jquery.magnific-popup.min.js');
+  }
+  // $document->addStyleSheet(JUri::base(true).'/templates/'.$tmpl.'/dist/magnific/magnific-popup.min.css');
+  // $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/magnific/jquery.magnific-popup.min.js');
 }
 
 /* layout */
