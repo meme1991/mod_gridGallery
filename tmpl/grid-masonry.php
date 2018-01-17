@@ -31,7 +31,7 @@ phocagalleryimport('phocagallery.library.library');
 // phocagalleryimport('phocagallery.picasa.picasa');
 ?>
 <?php if($list) : ?>
-<section class="gallery-module grid-masonry-layout wrapper">
+<section class="gallery-module grid-masonry-layout wrapper gid-<?php echo $gal_id ?>">
 	<?php if($module->showtitle) : ?>
 		<div class="container">
 			<div class="row">
@@ -43,7 +43,7 @@ phocagalleryimport('phocagallery.library.library');
 		</div>
 	<?php endif; ?>
 	<div class="container<?php echo $container ?>">
-		<div class="row grid-gallery gid-<?php echo $gal_id ?>">
+		<div class="row grid-gallery">
 			<div class="col-6 col-sm-6 col-md-4 col-lg-<?php echo $col ?> col-xl-<?php echo $col ?> image grid-sizer"></div>
 
 			<?php shuffle($list) ?>
@@ -92,7 +92,7 @@ phocagalleryimport('phocagallery.library.library');
 $document->addScriptDeclaration("
   jQuery(document).ready(function($){
 
-    $('.grid-masonry-layout .grid-gallery.gid-".$gal_id."').magnificPopup({
+    $('.grid-masonry-layout.gid-".$gal_id." .grid-gallery').magnificPopup({
 	    delegate:'a.magnific-overlay',
 	    type:'image',
 	    gallery:{enabled:true}
@@ -103,8 +103,8 @@ $document->addScriptDeclaration("
 
 $document->addScriptDeclaration("
 	jQuery(document).ready(function($){
-		if($('.grid-masonry-layout .grid-gallery.gid-".$gal_id."').length){
-			var grid = $('.grid-masonry-layout .grid-gallery.gid-".$gal_id."').masonry({
+		if($('.grid-masonry-layout.gid-".$gal_id." .grid-gallery').length){
+			var grid = $('.grid-masonry-layout.gid-".$gal_id." .grid-gallery').masonry({
 				itemSelector: '.grid-item',
 				columnWidth: '.grid-sizer',
 				percentPosition: true

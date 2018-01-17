@@ -31,7 +31,7 @@ phocagalleryimport('phocagallery.library.library');
 // phocagalleryimport('phocagallery.picasa.picasa');
 ?>
 <?php if($list) : ?>
-<section class="gallery-module grid-layout wrapper">
+<section class="gallery-module grid-layout wrapper gid-<?php echo $gal_id ?>">
 	<?php if($module->showtitle) : ?>
 		<div class="container">
 			<div class="row">
@@ -43,7 +43,7 @@ phocagalleryimport('phocagallery.library.library');
 		</div>
 	<?php endif; ?>
 	<div class="container<?php echo $container ?>">
-		<div class="row grid-gallery gid-<?php echo $gal_id ?>">
+		<div class="row grid-gallery">
 			<?php shuffle($list) ?>
 			<?php foreach($list as $k => $item) : ?>
 
@@ -89,7 +89,7 @@ phocagalleryimport('phocagallery.library.library');
 $document->addScriptDeclaration("
   jQuery(document).ready(function($){
 
-    $('.grid-gallery.gid-".$gal_id."').magnificPopup({
+    $('.grid-layout.gid-".$gal_id." .grid-gallery').magnificPopup({
 	    delegate:'a.magnific-overlay',
 	    type:'image',
 	    gallery:{enabled:true}

@@ -31,7 +31,7 @@ phocagalleryimport('phocagallery.library.library');
 // phocagalleryimport('phocagallery.picasa.picasa');
 ?>
 <?php if($list) : ?>
-<section class="gallery-module wrapper grid-isotope-layout">
+<section class="gallery-module wrapper grid-isotope-layout gid-<?php echo $gal_id ?>">
 	<?php if($module->showtitle) : ?>
 		<div class="container">
 			<div class="row">
@@ -55,7 +55,7 @@ phocagalleryimport('phocagallery.library.library');
 				<?php endforeach; ?>
 			</div>
 		</div>
-		<div class="row grid-gallery gid-<?php echo $gal_id ?> mt-5">
+		<div class="row grid-gallery mt-5">
 			<div class="col-6 col-sm-6 col-md-4 col-lg-<?php echo $col ?> col-xl-<?php echo $col ?> image grid-sizer"></div>
 
 			<?php shuffle($list) ?>
@@ -104,7 +104,7 @@ phocagalleryimport('phocagallery.library.library');
 $document->addScriptDeclaration("
   jQuery(document).ready(function($){
 
-    $('.grid-isotope-layout .grid-gallery.gid-".$gal_id."').magnificPopup({
+    $('.grid-isotope-layout.gid-".$gal_id." .grid-gallery').magnificPopup({
 	    delegate:'a.magnific-overlay',
 	    type:'image',
 	    gallery:{enabled:true}
@@ -116,7 +116,7 @@ $document->addScriptDeclaration("
 $document->addScriptDeclaration("
 	jQuery(document).ready(function($){
 
-		var grid = $('.grid-isotope-layout .grid-gallery.gid-".$gal_id."').isotope({
+		var grid = $('.grid-isotope-layout.gid-".$gal_id." .grid-gallery').isotope({
 		  // set itemSelector so .grid-sizer is not used in layout
 		  itemSelector: '.grid-item',
 		  percentPosition: true,
@@ -126,7 +126,7 @@ $document->addScriptDeclaration("
 		})
 
 		// filter items on button click
-		$('.grid-isotope-layout .filter-button-group').on( 'click', 'button', function() {
+		$('.grid-isotope-layout.gid-".$gal_id." .filter-button-group').on( 'click', 'button', function() {
 		  var filterValue = $(this).attr('data-filter');
 		  grid.isotope({ filter: filterValue });
 		});
