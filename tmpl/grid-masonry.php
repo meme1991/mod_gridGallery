@@ -19,19 +19,19 @@ if (! class_exists('PhocaGalleryLoader')) {
 phocagalleryimport('phocagallery.path.path');
 phocagalleryimport('phocagallery.path.route');
 phocagalleryimport('phocagallery.library.library');
-phocagalleryimport('phocagallery.text.text');
-phocagalleryimport('phocagallery.access.access');
-phocagalleryimport('phocagallery.file.file');
-phocagalleryimport('phocagallery.file.filethumbnail');
-phocagalleryimport('phocagallery.image.image');
-phocagalleryimport('phocagallery.image.imagefront');
-phocagalleryimport('phocagallery.render.renderfront');
-phocagalleryimport('phocagallery.render.renderdetailwindow');
-phocagalleryimport('phocagallery.ordering.ordering');
-phocagalleryimport('phocagallery.picasa.picasa');
+// phocagalleryimport('phocagallery.text.text');
+// phocagalleryimport('phocagallery.access.access');
+// phocagalleryimport('phocagallery.file.file');
+// phocagalleryimport('phocagallery.file.filethumbnail');
+// phocagalleryimport('phocagallery.image.image');
+// phocagalleryimport('phocagallery.image.imagefront');
+// phocagalleryimport('phocagallery.render.renderfront');
+// phocagalleryimport('phocagallery.render.renderdetailwindow');
+// phocagalleryimport('phocagallery.ordering.ordering');
+// phocagalleryimport('phocagallery.picasa.picasa');
 ?>
 <?php if($list) : ?>
-<section class="gallery-module">
+<section class="gallery-module grid-masonry-layout wrapper">
 	<?php if($module->showtitle) : ?>
 		<div class="container">
 			<div class="row">
