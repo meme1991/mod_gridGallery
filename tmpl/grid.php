@@ -37,14 +37,18 @@ phocagalleryimport('phocagallery.library.library');
 			<div class="row">
 				<div class="col-12 title-section">
 					<h2><?php echo $module->title ?></h2>
-					<p>Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa.</p>
+					<?php if($description) : ?>
+						<p><?= $description ?></p>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
 	<?php endif; ?>
 	<div class="container<?php echo $container ?>">
 		<div class="row grid-gallery">
-			<?php shuffle($list) ?>
+			<?php if($shuffle) : ?>
+				<?php shuffle($list) ?>
+			<?php endif; ?>
 			<?php foreach($list as $k => $item) : ?>
 
 				<?php if($k >= $limit) : ?>
@@ -66,8 +70,8 @@ phocagalleryimport('phocagallery.library.library');
 					<figure style="margin:<?php echo $margin ?>px">
 						<a class="magnific-overlay" title="<?php echo $item->title ?>" href="<?php echo $flink ?>">
 							<img src="<?php echo JUri::base(true)."/images/phocagallery/".$item->filename; ?>" alt="">
-							<figcaption class="d-flex justify-content-center align-items-center">
-								<p class="mb-0 text-center"><?php echo $item->title ?></p>
+							<figcaption class="d-flex justify-content-center align-items-center" style="background-color:<?= $imgOverlay ?>">
+								<p class="mb-0 text-center" style="color:<?= $imgText ?>"><?php echo $item->title ?></p>
 							</figcaption>
 						</a>
 					</figure>
@@ -75,7 +79,7 @@ phocagalleryimport('phocagallery.library.library');
 			<?php endforeach; ?>
 
 			<?php if($linkYN) : ?>
-				<div class="col-12 col-sm-6 col-md-4 col-lg-<?php echo $col ?> col-xl-<?php echo $col ?> d-flex align-items-center justify-content-center image">
+				<div class="col-12 d-flex align-items-center justify-content-center image mt-4">
 					<p class="mb-0"><a href="<?php echo $link ?>" title="<?php echo $link_text ?>" class="btn btn-primary"><?php echo $link_text ?> <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
 				</div>
 			<?php endif; ?>
@@ -85,7 +89,6 @@ phocagalleryimport('phocagallery.library.library');
 </section>
 
 <?php
-
 $document->addScriptDeclaration("
   jQuery(document).ready(function($){
 
