@@ -14,7 +14,7 @@ JLoader::register('ModGridGallery', __DIR__ . '/helper.php');
 // params
 $jquery       = $params->get('jquery-load');
 $magnific     = $params->get('magnific');
-$masonry      = $params->get('masonry');
+// $masonry      = $params->get('masonry');
 $catid        = $params->get('catid', array());
 $image        = $params->get('image');
 $num_line     = $params->get('num-line');
@@ -35,6 +35,8 @@ $container = ($container) ? '-fluid' : '';
 $document = JFactory::getDocument();
 $tmpl     = JFactory::getApplication()->getTemplate();
 
+if($jquery)
+  JHtml::_('jquery.framework');
 /* style */
 switch ($params->get('layout')) {
   case '_:grid':
@@ -75,8 +77,6 @@ switch ($params->get('layout')) {
 }
 
 /* script */
-if($jquery)
-  JHtml::_('jquery.framework');
 if($magnific){
   $extensionPath = '/templates/'.$tmpl.'/dist/magnific/';
   if(file_exists(JPATH_SITE.$extensionPath)){
