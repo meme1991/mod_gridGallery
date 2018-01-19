@@ -52,11 +52,11 @@ switch ($params->get('layout')) {
     // masonry
     $extensionPath = '/templates/'.$tmpl.'/dist/masonry/';
     if(file_exists(JPATH_SITE.$extensionPath)){
-    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/masonry.min.js');
-    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/lazyload.min.js');
+    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/masonry.min.js', 'text/javascript', true, false);
+    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/lazyload.min.js', 'text/javascript', true, false);
     } else{
-    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/masonry/masonry.min.js');
-    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/masonry/lazyload.min.js');
+    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/masonry/masonry.min.js', 'text/javascript', true, false);
+    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/masonry/lazyload.min.js', 'text/javascript', true, false);
     }
     // $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/masonry.min.js');
     // $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/lazyload.min.js');
@@ -66,16 +66,16 @@ switch ($params->get('layout')) {
     // isotope
     $extensionPath = '/templates/'.$tmpl.'/dist/isotope/';
     if(file_exists(JPATH_SITE.$extensionPath)){
-    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/isotope/isotope.min.js');
+    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/isotope/isotope.min.js', 'text/javascript', true, false);
     } else{
-    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/isotope/isotope.min.js');
+    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/isotope/isotope.min.js', 'text/javascript', true, false);
     }
     // lazyload
     $extensionPath = '/templates/'.$tmpl.'/dist/masonry/';
     if(file_exists(JPATH_SITE.$extensionPath)){
-    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/lazyload.min.js');
+    	$document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/lazyload.min.js', 'text/javascript', true, false);
     } else{
-    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/masonry/lazyload.min.js');
+    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/masonry/lazyload.min.js', 'text/javascript', true, false);
     }
     break;
 
@@ -85,10 +85,10 @@ switch ($params->get('layout')) {
     $extensionPath = '/templates/'.$tmpl.'/dist/swiper/';
     if(file_exists(JPATH_SITE.$extensionPath)){
     	$document->addStyleSheet(JUri::base(true).'/templates/'.$tmpl.'/dist/swiper/swiper.min.css');
-      $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/swiper/swiper.min.js');
+      $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/swiper/swiper.min.js', 'text/javascript', true, false);
     } else{
       $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/dist/swiper/swiper.min.css');
-    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/swiper/swiper.min.js');
+    	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/swiper/swiper.min.js', 'text/javascript', true, false);
     }
     break;
 
@@ -100,10 +100,10 @@ if($magnific){
   $extensionPath = '/templates/'.$tmpl.'/dist/magnific/';
   if(file_exists(JPATH_SITE.$extensionPath)){
     $document->addStyleSheet(JUri::base(true).'/templates/'.$tmpl.'/dist/magnific/magnific-popup.min.css');
-    $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/magnific/jquery.magnific-popup.min.js');
+    $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/magnific/jquery.magnific-popup.min.js', 'text/javascript', true, false);
   } else{
     $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/dist/magnific/magnific-popup.min.css');
-    $document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/magnific/jquery.magnific-popup.min.js');
+    $document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/magnific/jquery.magnific-popup.min.js', 'text/javascript', true, false);
   }
   // $document->addStyleSheet(JUri::base(true).'/templates/'.$tmpl.'/dist/magnific/magnific-popup.min.css');
   // $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/magnific/jquery.magnific-popup.min.js');
