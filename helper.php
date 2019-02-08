@@ -51,7 +51,7 @@ class ModGridGallery
 		$query->select($db->quoteName('pc.title', 'category_title'));
 		$query->from($db->quoteName('#__phocagallery', 'p'));
 		$query->join('INNER', $db->quoteName('#__phocagallery_categories', 'pc') . ' ON (' . $db->quoteName('p.catid') . ' = ' . $db->quoteName('pc.id') . ')');
-		//$query->where($db->quoteName('catid') . ' = '. $db->quote($catid[0]));
+		$query->where($db->quoteName('p.published') . ' = '. 1);
 		$query->where($queryCatid);
 		if(!is_null($image))
 			$query->where($queryImage);
