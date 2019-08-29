@@ -5,7 +5,7 @@
  * @copyright  Copyright (c) Spedi srl.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
-.gallery-module.grid-layout{
+.gallery-module.album_grid-layout{
   .title-section{
     // padding-top: 20px;
     // padding-bottom: 20px;
@@ -39,6 +39,7 @@
           width: 100%;
           height: 100%;
           opacity: 0;
+          background: linear-gradient( 135deg, #F05F57 10%, #360940 100%);
           // background-color: #000;
           // color: #fff;
           -webkit-transform: translate(0, 0);
