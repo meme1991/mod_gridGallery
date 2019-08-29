@@ -33,7 +33,6 @@ $link_text    = $params->get('link-text');
 // gallery id
 $gal_id = substr(md5($module->id.$module->title), 1, 5);
 
-$list      = ModGridGallery::category($catid, $image);
 $col       = $num_line;
 $container = ($container) ? '-fluid' : '';
 
@@ -45,9 +44,19 @@ if($jquery)
 /* style */
 switch ($params->get('layout')) {
   case '_:grid':
+    $list      = ModGridGallery::category($catid, $image);
     $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/css/grid-gallery.min.css?v=1.0.0');
     break;
+  case '_:album-grid':
+    $list = ModGridGallery::categories($catid);
+    $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/css/album-grid.min.css?v=1.0.0');
+    break;
+  case '_:aside':
+    $list      = ModGridGallery::category($catid, $image);
+    $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/css/aside-gallery.min.css?v=1.0.0');
+    break;
   case '_:grid-masonry':
+    $list      = ModGridGallery::category($catid, $image);
     $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/css/grid-gallery-masonry.min.css?v=1.0.0');
     // masonry
     $extensionPath = '/templates/'.$tmpl.'/dist/masonry/';
@@ -62,6 +71,7 @@ switch ($params->get('layout')) {
     // $document->addScript(JUri::base(true).'/templates/'.$tmpl.'/dist/masonry/lazyload.min.js');
     break;
   case '_:isotope':
+    $list      = ModGridGallery::category($catid, $image);
     $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/css/isotope.min.css?v=1.0.0');
     // isotope
     $extensionPath = '/templates/'.$tmpl.'/dist/isotope/';
@@ -78,8 +88,8 @@ switch ($params->get('layout')) {
     	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/masonry/lazyload.min.js', 'text/javascript', true, false);
     }
     break;
-
   case '_:slide-auto':
+    $list      = ModGridGallery::category($catid, $image);
     $document->addStyleSheet(JUri::base(true).'/modules/'.$module->module.'/css/slide-auto.min.css?v=1.0.0');
     // isotope
     $extensionPath = '/templates/'.$tmpl.'/dist/swiper/';
@@ -91,8 +101,6 @@ switch ($params->get('layout')) {
     	$document->addScript(JUri::base(true).'/modules/'.$module->module.'/dist/swiper/swiper.min.js', 'text/javascript', true, false);
     }
     break;
-
-
 }
 
 /* script */
