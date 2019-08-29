@@ -31,7 +31,7 @@ phocagalleryimport('phocagallery.library.library');
 // phocagalleryimport('phocagallery.picasa.picasa');
 ?>
 <?php if($list) : ?>
-<section class="gallery-module grid-layout wrapper gid-<?php echo $gal_id ?>">
+<section class="gallery-module album_grid-layout wrapper gid-<?php echo $gal_id ?>">
 	<?php if($module->showtitle) : ?>
 		<div class="container">
 			<div class="row">
@@ -55,24 +55,34 @@ phocagalleryimport('phocagallery.library.library');
 					<?php break; ?>
 				<?php endif; ?>
 
-				<?php if($magnific) : ?>
-					<?php $flink = JUri::base(true)."/images/phocagallery/".$item->filename; ?>
-				<?php else: ?>
-					<?php $flink = JRoute::_(PhocaGalleryRoute::getCategoryRoute($item->catid, $item->alias)); ?>
-				<?php endif; ?>
+				<?php $flink = JRoute::_(PhocaGalleryRoute::getCategoryRoute($item->catid, $item->alias)); ?>
 
 				<?php $hidden = ''; ?>
 				<?php if($k > 10) : ?>
 					<?php $hidden = 'd-none d-md-block'; ?>
 				<?php endif; ?>
 
+				<?php
+				if($item->img_cover != 0){
+					$db = JFactory::getDbo();
+					$query = $db->getQuery(true);
+					$query->select($db->quoteName(array('p.title', 'p.filename')));
+					$query->from($db->quoteName('#__phocagallery', 'p'));
+					$query->where($db->quoteName('id') . ' = '. $item->img_cover);
+					$db->setQuery($query);
+					$row = $db->loadRow();
+					$img = $row[1];
+				}else{
+					$img = $item->filename;
+				}
+				?>
+
 				<div class="col-6 col-sm-6 col-md-4 col-lg-<?php echo $col ?> col-xl-<?php echo $col ?> image <?php echo $hidden ?>" style="height: <?php echo $height ?>px">
 					<figure style="margin:<?= $margin ?>px">
-						<a class="magnific-overlay" title="<?php echo $item->title ?>" href="<?php echo $flink ?>">
-							<?php $img = ($item->image == '') ? $item->filename : $item->image;  ?>
+						<a class="magnific-overlay" title="<?php echo $item->category_title ?>" href="<?php echo $flink ?>">
 							<img src="<?php echo JUri::base(true)."/images/phocagallery/".$img; ?>" alt="">
 							<figcaption class="d-flex justify-content-center align-items-center" style="background-color:<?= $imgOverlay ?>">
-								<p class="mb-0 text-center" style="color:<?= $imgText ?>"><?php echo $item->title ?></p>
+								<p class="mb-0 text-center" style="color:<?= $imgText ?>"><?php echo $item->category_title ?></p>
 							</figcaption>
 						</a>
 					</figure>
@@ -88,19 +98,4 @@ phocagalleryimport('phocagallery.library.library');
 		</div>
 	</div>
 </section>
-
-<?php
-
-$document->addScriptDeclaration("
-  jQuery(document).ready(function($){
-
-    $('.grid-layout.gid-".$gal_id." .grid-gallery').magnificPopup({
-	    delegate:'a.magnific-overlay',
-	    type:'image',
-	    gallery:{enabled:true}
-	  })
-
-  });
-");
- ?>
 <?php endif; ?>
